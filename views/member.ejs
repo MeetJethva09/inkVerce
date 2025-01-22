@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member</title>
+    <style>
+        
+        .card{
+            margin: 20px;
+            box-shadow: 0px 0px 10px rgb(156, 154, 154);
+            &:hover{
+            transform: translateY(-3px);
+            }
+        }
+        .big-container{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+      
+        }
+        .card-img-top{
+            height: 165px;
+            width: 100%;
+        }
+        @media screen and (max-width:720px){
+            .big-container{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+        }
+    </style>
+ <%- include('./partials/head') %>
+</head>
+<body>
+
+    
+    <%- include('./partials/nav') %>
+
+
+<div class="big-container">
+    <% allblogs.forEach((blog)=>{%>
+
+        <div class="card" style="width: 18rem;">
+            <img src="<%= blog.coverImage %>" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.title  %></h5>
+              <!-- <p class="card-text"></p> -->
+              <a href="/blog/view/<%= blog._id %>" class="btn btn-primary">View</a>
+              <a href="/blog/delete/<%= blog._id %>" class="btn btn-danger">Delete</a>
+            </div>
+          </div>
+    <%}) %>
+</div>
+
+
+    
+    <%- include('./partials/scripts') %>
+
+</body>
+</html>

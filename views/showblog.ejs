@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cimage{
+            height: 320px;
+            width: 600px;
+        }
+        @media screen and (max-width:720px){
+            #cimage{
+                width: 100%;
+            }
+        }
+    </style>
+ <%- include('./partials/head') %>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+<div class="container">
+
+    <h2 class="mt-3"><%= findblog.title %></h2>
+    <img src="<%= findblog.coverImage %>" alt=""  style="border-radius: 5px;" id="cimage">
+    <pre class="mt-3"><%= findblog.body %></pre>
+
+</div>
+
+<div class="container mt-2">
+
+    <b>Created By : </b>  <img src="<%= findblog.createdBy.profileImage %>" alt="" height="60px" width="60px"> <%= findblog.createdBy.fullName %>
+    <div class="form-container">
+       
+
+            <div class="mb-3 mt-2">
+            <form action="/blog/addcomment/<%= findblog._id %>" method="POST">
+                <h4>Comments (<%= findcomment.length %>)</h4>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="comment" placeholder="Add a Comment here.." required>
+                <button class="btn btn-primary mt-2">Add</button>
+            </form>
+              </div>
+    </div>
+        <div class="comment-container">
+            <% findcomment.forEach((com)=>{%>
+                <img src="<%= com.userId.profileImage %>" alt="" height="40px" width="40px"> <%= com.userId.fullName %>
+                <pre><%= com.content %></pre>
+            <%}) %>
+        </div>
+
+</div>
+
+    <%- include('./partials/scripts') %>
+  
+    
+</body>
+</html>

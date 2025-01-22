@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+           min-height: 100vh;
+        }
+        .card{
+            margin: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgb(156, 154, 154);
+            &:hover{
+                transform: translateY(-3px);
+                }
+        }
+        .main-container{
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+           
+            
+        }
+        @media screen and (max-width:720px){
+            .main-container{
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 2;
+            }
+        }
+    </style>
+ <%- include('./partials/head') %>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+
+
+    <div class="main-container ">
+        <% allblogs.forEach((blog)=>{%>
+
+            <div class="card" style="width: 18rem;">
+                <img src="<%= blog.coverImage %>" class="card-img-top" alt="..." height="170px">
+                <div class="card-body">
+                  <h5 class="card-title"><%= blog.title %></h5>
+                  <a href="/user/signin" class="btn btn-primary">View</a>
+                </div>
+              </div>
+
+        <%}) %>
+        
+
+    </div>
+   
+    <%- include('./partials/scripts') %>
+    
+</body>
+</html>
