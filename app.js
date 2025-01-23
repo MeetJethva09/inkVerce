@@ -9,6 +9,7 @@ const mongoose = require("mongoose")
 const {checkJwtToken , isLoggedIn} = require("./middlewares/authcheck")
 const cookieParser = require('cookie-parser')
 
+
 let port = process.env.PORT || 3000
 
 mongoose.connect(process.env.MONGOURL).then((console.log("Database connectivity successfull..")))
