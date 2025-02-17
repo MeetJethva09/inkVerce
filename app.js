@@ -34,6 +34,11 @@ app.get("/" , async (req,res)=>{
     res.render('home', {allblogs : allblogs})
 })
 
+app.head('/static-check', (req, res) => {
+    // Set headers for the static check response
+    res.status(200).set('Custom-Header', 'StaticCheckCompleted').end(); // No body, just headers
+});
+
 
 app.listen(port , (req,res)=>{
     console.log(`server intialized at http://localhost:${port}`);  
